@@ -1,5 +1,5 @@
-mame pisat vlastne  veci :) :)
-- fetch
+ale mame :)
+
 - pull
 - remote
-
+- fetch

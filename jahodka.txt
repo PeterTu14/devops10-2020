@@ -1,10 +1,10 @@
-#Jahodka bude cervena
+#Jahody
+
+5 piati riadok
+6 siesti riadok
+7 siedmi riadok
 
 1 cerveny riadok
 2 druhy riadok
 3 treti riadok
 4 stvrti riadok
-5 piati riadok
-6 siesti riadok
-7 siedmi riadok
-8 osmi riadok
