@@ -1,5 +1,5 @@
-nemame pisat vlastne  veci :) :)
+mame pisat vlastne  veci :) :)
 - fetch
 - pull
 - remote
-- remote -v
+

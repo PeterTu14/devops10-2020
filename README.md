@@ -4,3 +4,4 @@
   * commit
   * push
   * pull
+  * add
