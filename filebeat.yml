@@ -1,0 +1,212 @@
+#=========================== Filebeat inputs =============================
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/artemis/*_error.log
+  fields:
+    appl: otc_test_arte
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/bankaccountvalidator/*_error.log
+  fields:
+    appl: otc_test_bank
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/boni4magentahaus/*_error.log
+  fields:
+    appl: otc_test_boni4MH
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/dfp/*_error.log
+  fields:
+    appl: otc_test_dfp
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/boni4magentabusiness/*_error.log
+  fields:
+    appl: otc_test_boni4MB
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/tcopsimporter/*_error.log
+  fields:
+    appl: otc_test_tcimpo
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/scorecache/*_error.log
+  fields:
+    appl: otc_test_score
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/guimanagement/*_error.log
+  fields:
+    appl: otc_test_guiM
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/listmanagement/*_error.log
+  fields:
+    appl: otc_test_listM
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after  
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/plausibilitycheck/*_error.log
+  fields:
+    appl: otc_test_plausi
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/productcatalog/*_error.log
+  fields:
+    appl: otc_test_prodC
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/boni4retail/*_error.log
+  fields:
+    appl: otc_test_boni4R
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after  
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/boni4omsoe/*_error.log
+  fields:
+    appl: otc_test_boni4O
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/boni4phoenix/*_error.log
+  fields:
+    appl: otc_test_boni4PH
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/geocode/*_error.log
+  fields:
+    appl: otc_test_geoco
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+- type: log
+  enabled: true
+  paths:
+    - /home/service/logs/trex/*_error.log
+  fields:
+    appl: otc_test_trex
+  fields_under_root: true
+  # match multiline events
+  multiline.pattern: '^202'
+  multiline.negate: true
+  multiline.match: after
+#============================= Filebeat modules ===============================
+filebeat.config.modules:
+  path: ${path.config}/modules.d/*.yml
+  reload.enabled: false
+#==================== Elasticsearch template setting ==========================
+setup.template.settings:
+  index.number_of_shards: 1
+  #index.codec: best_compression
+  #_source.enabled: false
+#================================ General =====================================
+# The name of the shipper that publishes the network data. It can be used to group
+# all the transactions sent by a single shipper in the web interface.
+name: "otc_test_env"
+# The tags of the shipper are included in their own field with each
+# transaction published.
+tags: ["rmc_otc_ta", "rmc_otc_log"]
+# Optional fields that you can specify to add additional information to the
+# output.
+fields_under_root: true
+fields:
+  env: otc_test
+#============================== Kibana =====================================
+# Starting with Beats version 6.0.0, the dashboards are loaded via the Kibana API.
+# This requires a Kibana endpoint configuration.
+setup.kibana:
+#----------------------------- Logstash output --------------------------------
+output.logstash:
+  hosts: ["10.91.10.2:5104"]
+#================================ Processors =====================================
+# Configure processors to enhance or manipulate events generated by the beat.
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+  - add_docker_metadata: ~
